@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>AutoHub</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+</head>
+<body>
+
+    <nav class="navbar">
+        <ul>
+            <a href=""><img src="{% static 'logo.png' %}" alt="AutoHub Logo"></a>
+            {% if user.is_authenticated %}
+            	<li><a href="logout/">Logout</a></li>
+                {% else %}
+                <li><a href="login/">Login</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+
+    <div class="content">
+        {% block content %}{% endblock %}
+    </div>
+
+</body>
+</html>
