@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+	{% if user.is_authenticated %}
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Submit Post</button>
+        </form>
+    {% else %}
+        <a href="{% url 'login' %}" style="color: black">Login</a>
+    {% endif %}
+{% endblock %}

@@ -17,12 +17,13 @@ class Post(models.Model):
     description = models.TextField(blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
+    likes = models.ManyToManyField(User, related_name='liked_posts', blank=True)
 
     def __str__(self):
         return f"Post of {self.car}"
 
 class Like(models.Model):
-    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='likes')
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='post_likes')
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
 
